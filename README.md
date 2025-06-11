@@ -1,6 +1,6 @@
-# Agentic AI CookieCutter Template
+# Agentic AI Template
 
-A powerful cookiecutter template for creating agentic AI systems with multiple agents, tools, and a web interface. Developed by Anjali Jain.
+A powerful template for creating agentic AI systems with multiple agents, tools, and a web interface. Developed by Anjali Jain.
 
 ## Features
 
@@ -15,29 +15,38 @@ A powerful cookiecutter template for creating agentic AI systems with multiple a
 
 ## Quick Start
 
-1. Install cookiecutter:
+1. Clone the repository:
 ```bash
-pip install cookiecutter
+git clone https://github.com/CodeDaim0n/cookiecutter-agentic-ai
+cd cookiecutter-agentic-ai
 ```
 
-2. Create a new project:
+2. Run the template processor:
 ```bash
-cookiecutter https://github.com/CodeDaim0n/cookiecutter-agentic-ai
+python replace_cookiecutter.py
 ```
 
-3. Follow the prompts to configure your project:
-   - `project_name`: Name of your project
-   - `supervisor_name`: Name of the supervisor agent
-   - `agent_one_name`: Name of the first agent
-   - `agent_two_name`: Name of the second agent
-   - `agent_one_tool_one`: Name of the first tool for agent one
-   - `agent_one_tool_two`: Name of the second tool for agent one
-   - `agent_two_tool_one`: Name of the first tool for agent two
-   - `agent_two_tool_two`: Name of the second tool for agent two
+3. Follow the prompts to provide values for each variable. You can:
+   - Press Enter to use the default value
+   - Type a new value to override the default
 
-4. Navigate to your project directory and install dependencies:
+Example:
+```
+Please provide values for the following variables:
+(Press Enter to use default value if available)
+
+Enter value for project_name (default: my-agentic-ai): restaurant_agentic-ai
+Enter value for supervisor_name (default: supervisor_agent): supervisor_agent
+Enter value for agent_one_name (default: agent_one): customer_support_agent
+Enter value for agent_two_name (default: agent_two): kitchen_agent
+Enter value for agent_one_tool_one (default: agent_one_tool_one): upsert_customer
+Enter value for agent_one_tool_two (default: agent_one_tool_two): upsert_order
+Enter value for agent_two_tool_one (default: agent_two_tool_one): get_reciepe
+Enter value for agent_two_tool_two (default: agent_two_tool_two): prepare_order
+```
+
+4. Install dependencies:
 ```bash
-cd your-project-name
 pip install -r requirements.txt
 ```
 
