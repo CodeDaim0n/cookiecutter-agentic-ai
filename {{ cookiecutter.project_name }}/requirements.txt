@@ -1,0 +1,32 @@
+# Web Framework and API
+fastapi>=0.109.2        # web/main.py: Main FastAPI application, HTTP endpoints, and request handling
+uvicorn>=0.27.1         # web/main.py: ASGI server for running the FastAPI application
+jinja2>=3.1.3          # web/main.py: Template rendering for HTML responses
+pydantic>=2.6.1        # web/main.py: Request/response models, data validation
+                        # tools/restaurant/utils/tool_wrappers.py: Data validation and model creation
+
+# LangChain and OpenAI Integration
+langchain-core>=0.1.27  # tools/restaurant/utils/tool_loader.py: StructuredTool implementation
+                        # tools/restaurant/utils/tool_wrappers.py: RunnableConfig
+                        # tools/restaurant/utils/history.py: RunnableConfig for agent state
+langchain-openai>=0.0.8 # tools/restaurant/utils/prompt.py: ChatOpenAI integration
+openai>=1.12.0         # tools/restaurant/utils/prompt.py: OpenAI API for prompt handling
+                        # tools/restaurant/utils/moderation.py: Content moderation
+
+# LangGraph and Agents
+langgraph>=0.0.20      # agents/core/langgraph/*: Core agent workflow functionality
+langgraph-supervisor>=0.0.1  # agents/core/langgraph/supervisor_agent_builder.py: Supervisor implementation
+langgraph-prebuilt>=0.0.1    # agents/core/langgraph/react_agent_builder.py: Prebuilt agent components
+
+
+# Utilities
+python-dotenv>=1.0.1   # tools/restaurant/utils/config.py: Environment variable management
+requests>=2.31.0       # tools/restaurant/utils/*: HTTP client for API calls
+                        # tools/restaurant/utils/history.py: API requests for history
+python-multipart>=0.0.9 # web/main.py: Form data handling
+email-validator>=2.1.0 # web/main.py: Email validation for customer info
+typing-extensions>=4.9.0 # web/main.py: Type hints and Optional types
+
+# Development and Testing
+pytest>=8.0.0         # tests/*: Testing framework
+pytest-asyncio>=0.23.5 # tests/*: Async test support

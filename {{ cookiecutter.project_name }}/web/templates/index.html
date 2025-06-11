@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ cookiecutter.project_name }} Agent Tester</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      color: #333;
+    }
+    .container {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 30px 40px;
+      margin-top: 60px;
+      width: 100%;
+      max-width: 600px;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+      text-align: center;
+      color: #2c3e50;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border: 1px solid #ccd0d5;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    .buttons {
+      margin-top: 25px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    button {
+      background-color: #4caf50;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      padding: 10px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover:enabled {
+      background-color: #43a047;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .response-box {
+      margin-top: 30px;
+    }
+    .response-box h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    pre {
+      background-color: #f0f4f8;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px solid #e1e4e8;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Restaurant Agent Interface</h1>
+
+    <label for="agent_name">Select Agent</label>
+    <select id="agent_name">
+      <option value="{{ cookiecutter.supervisor_name }}">{{ cookiecutter.supervisor_name }}</option>
+      <option value="{{ cookiecutter.agent_one_name }}">{{ cookiecutter.agent_one_name }}</option>
+      <option value="{{ cookiecutter.agent_two_name }}">{{ cookiecutter.agent_two_name }}</option>
+    </select>
+    <label for="identifier">Identifier</label>
+    <input type="text" id="identifier" placeholder="Enter your identifier here">
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="Enter your message here. The agent will handle all the details..."></textarea>
+
+    <div class="buttons">
+      <button id="sendBtn" onclick="sendAgent()">Send to Agent</button>
+    </div>
+
+    <div class="response-box">
+      <h2>Agent Response</h2>
+      <pre id="response">Awaiting input...</pre>
+    </div>
+  </div>
+
+  <script>
+    const sendBtn = document.getElementById('sendBtn');
+    const responseBox = document.getElementById('response');
+
+    async function sendAgent() {
+      sendBtn.disabled = true;
+      responseBox.textContent = 'Sending request...';
+
+      const agent = document.getElementById('agent_name').value;
+      const message = document.getElementById('message').value;
+
+      const payload = {
+        agent_name: agent,
+        message: message
+      };
+
+      try {
+        const res = await fetch('/api/agent', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        responseBox.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        responseBox.textContent = 'Error: ' + err;
+      } finally {
+        sendBtn.disabled = false;
+      }
+    }
+  </script>
+</body>
+</html>

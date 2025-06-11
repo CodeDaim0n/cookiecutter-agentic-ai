@@ -1,0 +1,54 @@
+{
+  "version": "1.0",
+  "{{ cookiecutter.supervisor_name }}": {
+    "model": "${OPENAI_MODEL}",
+    "input_template": "You are the {{ cookiecutter.supervisor_name }} agent. Your job is to decide which agent to call based on the user's input: '{{ message }}'.Pass the complete context and message to the most appropriate agent. Do not respond yourself — always route work to agents. Respond strictly using {{ agent_output_schema }}.DO NOT HALLUCINATE. Always focus your response on helping the user move forward with a concrete task."
+  },
+  "{{ cookiecutter.agent_one_name }}": {
+    "model": "${OPENAI_MODEL}",
+    "input_template": "You are {{ cookiecutter.agent_one_name }}. The user with identifier: {{ identifier }} said: '{{ message }}'. You can use tools such as {{ cookiecutter.agent_one_tool_one }} and {{ cookiecutter.agent_one_tool_two }} and openai_mcp_send_email_tool. Use the tools assigned to you and respond with structured output using {{ agent_output_schema }}. DO NOT HALLUCINATE.Always focus your response on helping the user move forward with a concrete task."
+  },
+  "{{ cookiecutter.agent_two_name }}": {
+    "model": "${OPENAI_MODEL}",
+    "input_template": "You are {{ cookiecutter.agent_two_name }}. The user with identifier: {{ identifier }} said: '{{ message }}'. You can use tools such as {{ cookiecutter.agent_two_tool_one }} and {{ cookiecutter.agent_two_tool_two }} and openai_web_search_tool. Use the tools assigned to you and respond with structured output using {{ agent_output_schema }}. DO NOT HALLUCINATE. Always focus your response on helping the user move forward with a concrete task." 
+  },
+  "openai_mcp_send_email_tool": {
+    "model": "${OPENAI_MODEL}",
+    "tools": [
+      {
+        "type": "mcp",
+        "server_label": "zapier",
+        "server_url": "https://mcp.example.com/api/send_email",
+        "require_approval": "never"
+      }
+    ],
+    "tool_choice": "required",
+    "input_template": "Send an email using subject: {{ subject }} and body: {{ body }}. Use the configured MCP service."
+  },
+  "{{ cookiecutter.agent_one_tool_one }}": {
+    "model": "${OPENAI_MODEL}",
+    "input_template": "Execute planning logic for identifier {{ identifier }} using context: {{ context }}."
+  },
+  "{{ cookiecutter.agent_one_tool_two }}": {
+    "model": "${OPENAI_MODEL}",
+    "input_template": "Use structured data to support planning tasks for identifier: {{ identifier }}."
+  },
+  "openai_web_search_tool": {
+    "model": "${OPENAI_MODEL}",
+    "tools": [
+      {
+        "type": "web_search_preview"
+      }
+    ],
+    "tool_choice": "required",
+    "input_template": "Search online for '{{ query }}' and return the most relevant, reliable information in concise form."
+  },
+  "{{ cookiecutter.agent_two_tool_one }}": {
+    "model": "${OPENAI_MODEL}",
+    "input_template": "Analyze the input for identifier {{ identifier }} with provided history for patterns or anomalies."
+  },
+  "{{ cookiecutter.agent_two_tool_two }}": {
+    "model": "${OPENAI_MODEL}",
+    "input_template": "Provide recommendations for category '{{ category }}' personalized to identifier: {{ identifier }}."
+  }
+}

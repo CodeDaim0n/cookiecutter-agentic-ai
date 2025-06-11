@@ -1,0 +1,142 @@
+{
+  "version": "1.0",
+  "tools": [
+    {
+      "name": "openai_mcp_send_email_tool",
+      "description": "Sends an email using the configured MCP (Multi-Channel Platform).",
+      "function_path": "tools.{{ cookiecutter.project_name }}.openai_mcp_send_email_tool.openai_mcp_send_email_tool",
+      "input_schema": {
+        "subject": "string",
+        "body": "string"
+      },
+      "output_schema": {
+        "structure": {
+          "output": "string",
+          "explanation": "string",
+          "summary": "string"
+        }
+      }
+    },
+    {
+      "name": "{{ cookiecutter.agent_one_tool_one }}",
+      "description": "Executes a planning-related action based on input context.",
+      "function_path": "tools.{{ cookiecutter.project_name }}.{{ cookiecutter.agent_one_tool_one }}.{{ cookiecutter.agent_one_tool_one }}",
+      "input_schema": {
+        "user_id": "string",
+        "context": "string"
+      },
+      "output_schema": {
+        "structure": {
+          "output": "string",
+          "explanation": "string",
+          "summary": "string"
+        }
+      }
+    },
+    {
+      "name": "{{ cookiecutter.agent_one_tool_two }}",
+      "description": "Performs a secondary task in support of planning or task execution.",
+      "function_path": "tools.{{ cookiecutter.project_name }}.{{ cookiecutter.agent_one_tool_two }}.{{ cookiecutter.agent_one_tool_two }}",
+      "input_schema": {
+        "data": "object"
+      },
+      "output_schema": {
+        "structure": {
+          "output": "string",
+          "summary": "string"
+        }
+      }
+    },
+    {
+      "name": "openai_web_search_tool",
+      "description": "Retrieves relevant online data using OpenAI's web search capabilities.",
+      "function_path": "tools.{{ cookiecutter.project_name }}.openai_web_search_tool.openai_web_search_tool",
+      "input_schema": {
+        "query": "string"
+      },
+      "output_schema": {
+        "structure": {
+          "results": "list",
+          "summary": "string"
+        }
+      }
+    },
+    {
+      "name": "{{ cookiecutter.agent_two_tool_one }}",
+      "description": "Handles context evaluation or analysis based on user history.",
+      "function_path": "tools.{{ cookiecutter.project_name }}.{{ cookiecutter.agent_two_tool_one }}.{{ cookiecutter.agent_two_tool_one }}",
+      "input_schema": {
+        "user_id": "string",
+        "history": "list"
+      },
+      "output_schema": {
+        "structure": {
+          "output": "string",
+          "summary": "string"
+        }
+      }
+    },
+    {
+      "name": "{{ cookiecutter.agent_two_tool_two }}",
+      "description": "Executes an additional analysis or recommendation routine.",
+      "function_path": "tools.{{ cookiecutter.project_name }}.{{ cookiecutter.agent_two_tool_two }}.{{ cookiecutter.agent_two_tool_two }}",
+      "input_schema": {
+        "category": "string"
+      },
+      "output_schema": {
+        "structure": {
+          "recommendations": "list",
+          "summary": "string"
+        }
+      }
+    },
+    {
+      "name": "{{ cookiecutter.agent_one_name }}",
+      "description": "Primary task-focused agent for planning and decision support.",
+      "function_path": "agents.core.langgraph.agent_dispatcher.agent_dispatch",
+      "input_schema": {
+        "message": "string",
+        "user_id": "string"
+      },
+      "output_schema": {
+        "structure": {
+          "output": "string",
+          "summary": "string",
+          "explanation": "string"
+        }
+      }
+    },
+    {
+      "name": "{{ cookiecutter.agent_two_name }}",
+      "description": "Analytical agent for evaluating input and escalating actions.",
+      "function_path": "agents.core.langgraph.agent_dispatcher.agent_dispatch",
+      "input_schema": {
+        "message": "string",
+        "user_id": "string"
+      },
+      "output_schema": {
+        "structure": {
+          "output": "string",
+          "summary": "string",
+          "explanation": "string"
+        }
+      }
+    },
+    {
+      "name": "{{ cookiecutter.supervisor_name }}",
+      "description": "Supervisor agent that routes user messages based on intent.",
+      "function_path": "agents.core.langgraph.agent_dispatcher.agent_dispatch",
+      "input_schema": {
+        "message": "string",
+        "user_id": "string"
+      },
+      "output_schema": {
+        "structure": {
+          "output": "string",
+          "summary": "string",
+          "explanation": "string"
+        }
+      }
+    }
+  ]
+}

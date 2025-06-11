@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "{{ cookiecutter.supervisor_name }}",
+      "type": "supervisor",
+      "description": "Main decision-maker. Routes input to the correct agent.",
+      "agents": ["{{ cookiecutter.agent_one_name }}", "{{ cookiecutter.agent_two_name }}"]
+    },
+    {
+      "id": "{{ cookiecutter.agent_one_name }}",
+      "type": "react_agent",
+      "description": "Handles planning or structured tasks.",
+      "tools": [
+        "openai_mcp_send_email_tool",
+        "agent_one_tool_one",
+        "agent_one_tool_two"
+      ]
+    },
+    {
+      "id": "{{ cookiecutter.agent_two_name }}",
+      "type": "react_agent",
+      "description": "Handles analysis, triage, or research.",
+      "tools": [
+        "openai_web_search_tool",
+        "agent_two_tool_one",
+        "agent_two_tool_two"
+      ]
+    }
+  ]
+}
