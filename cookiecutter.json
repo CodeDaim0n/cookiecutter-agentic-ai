@@ -1,10 +1,10 @@
 {
-  "project_name": "my-agentic-ai",
+  "project_name": "restaurant-agentic-ai",
   "supervisor_name": "supervisor_agent",
-  "agent_one_name": "agent_one",
-  "agent_two_name": "agent_two",
-  "agent_one_tool_one": "agent_one_tool_one",
-  "agent_one_tool_two": "agent_one_tool_two",
-  "agent_two_tool_one": "agent_two_tool_one",
-  "agent_two_tool_two": "agent_two_tool_two"
+  "agent_one_name": "order_taker_agent",
+  "agent_two_name": "kitchen_agent",
+  "agent_one_tool_one": "upsert_customer",
+  "agent_one_tool_two": "upsert_order",
+  "agent_two_tool_one": "fetch_recipe",
+  "agent_two_tool_two": "upsert_order"
 }

@@ -15,48 +15,57 @@ A powerful template for creating agentic AI systems with multiple agents, tools,
 
 ## Quick Start
 
+### Option 1: Using the Template Processor (Recommended)
+
 1. Clone the repository:
 ```bash
 git clone https://github.com/CodeDaim0n/cookiecutter-agentic-ai
 cd cookiecutter-agentic-ai
 ```
 
-2. Run the template processor:
+2. Edit `cookiecutter.json` with your desired values:
+```json
+{
+  "project_name": "your-project-name",
+  "supervisor_name": "your-supervisor-name",
+  "agent_one_name": "your-agent-one-name",
+  "agent_two_name": "your-agent-two-name",
+  "agent_one_tool_one": "your-agent-one-tool-one",
+  "agent_one_tool_two": "your-agent-one-tool-two",
+  "agent_two_tool_one": "your-agent-two-tool-one",
+  "agent_two_tool_two": "your-agent-two-tool-two"
+}
+```
+
+3. Copy the template processor script:
+```bash
+cp replace_cookiecutter.py ..
+cd ..
+```
+
+4. Run the template processor from the parent directory:
 ```bash
 python replace_cookiecutter.py
 ```
 
-3. Follow the prompts to provide values for each variable. You can:
-   - Press Enter to use the default value
-   - Type a new value to override the default
+The script will:
+- Find the template directory
+- Replace all cookiecutter variables in files and folder names
+- Rename the project directory to your specified name
 
-Example:
-```
-Please provide values for the following variables:
-(Press Enter to use default value if available)
-
-Enter value for project_name (default: my-agentic-ai): restaurant_agentic-ai
-Enter value for supervisor_name (default: supervisor_agent): supervisor_agent
-Enter value for agent_one_name (default: agent_one): customer_support_agent
-Enter value for agent_two_name (default: agent_two): kitchen_agent
-Enter value for agent_one_tool_one (default: agent_one_tool_one): upsert_customer
-Enter value for agent_one_tool_two (default: agent_one_tool_two): upsert_order
-Enter value for agent_two_tool_one (default: agent_two_tool_one): get_reciepe
-Enter value for agent_two_tool_two (default: agent_two_tool_two): prepare_order
-```
-
-4. Install dependencies:
+5. Install dependencies:
 ```bash
+cd your-project-name
 pip install -r requirements.txt
 ```
 
-5. Set up your environment variables:
+6. Set up your environment variables:
 ```bash
 cp .env.example .env
 # Edit .env with your OpenAI API key and other configurations
 ```
 
-6. Run the development server:
+7. Run the development server:
 ```bash
 python web/main.py
 ```
