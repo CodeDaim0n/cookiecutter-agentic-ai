@@ -13,8 +13,8 @@
       "description": "Handles planning or structured tasks.",
       "tools": [
         "openai_mcp_send_email_tool",
-        "agent_one_tool_one",
-        "agent_one_tool_two"
+        "{{ cookiecutter.agent_one_tool_one }}",
+        "{{ cookiecutter.agent_one_tool_two }}"
       ]
     },
     {
@@ -23,8 +23,8 @@
       "description": "Handles analysis, triage, or research.",
       "tools": [
         "openai_web_search_tool",
-        "agent_two_tool_one",
-        "agent_two_tool_two"
+        "{{ cookiecutter.agent_two_tool_one }}",
+        "{{ cookiecutter.agent_two_tool_two }}"
       ]
     }
   ]

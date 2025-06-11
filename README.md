@@ -22,7 +22,7 @@ pip install cookiecutter
 
 2. Create a new project:
 ```bash
-cookiecutter https://github.com/yourusername/cookiecutter-agentic-ai-final
+cookiecutter https://github.com/CodeDaim0n/cookiecutter-agentic-ai
 ```
 
 3. Follow the prompts to configure your project:
