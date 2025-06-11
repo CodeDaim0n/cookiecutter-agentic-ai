@@ -4,71 +4,110 @@ A powerful template for creating agentic AI systems with multiple agents, tools,
 
 ## Features
 
-- Multiple AI agents with different capabilities
-- Supervisor agent for routing and coordination
-- Customizable tools for each agent
-- Web interface with FastAPI
-- OpenAI integration
-- Structured project layout
-- Type hints and documentation
-- Logging and monitoring
+* Multiple AI agents with different capabilities
+* Supervisor agent for intelligent routing and coordination
+* Customizable tools for each agent
+* Web interface built with FastAPI
+* Seamless OpenAI integration with function calling
+* Structured project layout and type-hinted code
+* Comprehensive logging and monitoring
+
+## 🔍 Differentiation from Traditional LangGraph
+
+While this template leverages the core LangGraph framework for agent orchestration, it extends and enhances the standard LangGraph approach in several important ways:
+
+1. **Automated Project Scaffold**
+   Uses Cookiecutter to generate a fully scaffolded project—with directories, config files, tool stubs, logging setup, and a FastAPI interface—so you don’t start from a blank LangGraph codebase.
+
+2. **Supervisor Agent Layer**
+   Implements a dedicated supervisor agent to automatically route user requests to specialized worker agents. Traditional LangGraph examples often demonstrate single-agent chains or uncoordinated tool use without a routing layer.
+
+3. **Schema-Driven Tool Registry**
+   Tools are declared in `config/tools.json` with clear input/output schemas. LangGraph by itself requires manual registration of each function and custom prompt crafting for tool calls.
+
+4. **Out‑of‑the‑Box Web Interface**
+   Ships with a REST API endpoint (`/api/agent`) and an HTML testing UI. Standard LangGraph demos are typically code-driven notebooks or scripts without a user-facing layer.
+
+5. **Opinionated Logging & Monitoring**
+   Preconfigured JSONL logs for agent actions and tool invocations—ensuring observability from day one. LangGraph leaves logging implementation entirely up to the developer.
+
+6. **Developer Experience Enhancements**
+
+   * Type-hinted stubs and auto-generated docstrings to speed development.
+   * Example Pytest suite for automated testing.
+   * Environment-variable management (`.env`) and security best practices built in.
+
+By combining these enhancements with LangGraph’s powerful agent orchestration under the hood, this template accelerates the development of robust, multi-agent AI systems with minimal boilerplate.
 
 ## Quick Start
 
-### Option 1: Using the Template Processor (Recommended)
+### Minimal Setup
 
-1. Clone the repository:
-```bash
-git clone https://github.com/CodeDaim0n/cookiecutter-agentic-ai
-cd cookiecutter-agentic-ai
-```
+Follow the steps below for a fast local setup:
 
-2. Edit `cookiecutter.json` with your desired values:
-```json
-{
-  "project_name": "your-project-name",
-  "supervisor_name": "your-supervisor-name",
-  "agent_one_name": "your-agent-one-name",
-  "agent_two_name": "your-agent-two-name",
-  "agent_one_tool_one": "your-agent-one-tool-one",
-  "agent_one_tool_two": "your-agent-one-tool-two",
-  "agent_two_tool_one": "your-agent-two-tool-one",
-  "agent_two_tool_two": "your-agent-two-tool-two"
-}
-```
+1. Clone the repo and process the template (as above).
+2. Install dependencies and configure `.env`.
+3. Run `python web/main.py` and access `http://127.0.0.1:8000`.
 
-3. Copy the template processor script:
-```bash
-cp replace_cookiecutter.py ..
-cd ..
-```
+### Full Tutorial
 
-4. Run the template processor from the parent directory:
-```bash
-python replace_cookiecutter.py
-```
+For an in‑depth guide covering advanced usage—including agent and tool customization, supervisor routing, deployment, and monitoring—refer to the **Tutorial** section below or see [docs/TUTORIAL.md](docs/TUTORIAL.md).
 
-The script will:
-- Find the template directory
-- Replace all cookiecutter variables in files and folder names
-- Rename the project directory to your specified name
+---
 
-5. Install dependencies:
-```bash
-cd your-project-name
-pip install -r requirements.txt
-```
+## Tutorial
 
-6. Set up your environment variables:
-```bash
-cp .env.example .env
-# Edit .env with your OpenAI API key and other configurations
-```
+This tutorial expands on the Quick Start with detailed instructions and examples.
 
-7. Run the development server:
-```bash
-python web/main.py
-```
+### 1. Installation & Initial Run
+
+1. Install Cookiecutter: `pip install cookiecutter`
+2. Generate project: `cookiecutter https://github.com/CodeDaim0n/cookiecutter-agentic-ai`
+3. Install dependencies: `pip install -r requirements.txt`
+4. Configure `.env` with your OpenAI credentials.
+5. Start the server: `python web/main.py`
+6. Open the UI or POST to `/api/agent` to verify setup.
+
+### 2. Customizing Agents & Tools
+
+* **Agents:**
+
+  * Edit `config/nodes.json` to add or rename agents.
+  * Adjust prompts and models in `config/openai_config.json`.
+* **Tools:**
+
+  * Implement Python stubs in `tools/<project>/`.
+  * Define schema in `config/tools.json` and assign tools in `config/nodes.json`.
+
+### 3. Supervisor Usage
+
+Always send user queries to `supervisor_agent` via the UI or API. The supervisor will delegate to the appropriate worker agent based on content. Adjust its routing prompt in `config/openai_config.json` as needed.
+
+### 4. Deployment
+
+* **Production server:**
+
+  ```bash
+  uvicorn <project>.web.main:app --host 0.0.0.0 --port 80 --workers 4
+  ```
+* **Docker:** see the provided `Dockerfile` for containerization.
+* **Security:** use HTTPS, manage secrets in environment variables.
+
+### 5. Logging & Monitoring
+
+* Logs are written to `logs/agent_logs.jsonl` and `logs/tool_logs.jsonl`.
+* Integrate with ELK/Prometheus/Sentry for dashboards and alerts.
+
+### 6. Example Scenario
+
+**Use case:** Schedule a meeting with email and research lookup:
+
+1. Query "Find an Italian restaurant in London." → routed to `research_agent`.
+2. Query "Schedule dinner there next Friday at 7 PM and email me details." → routed to `planner_agent`.
+
+Review logs to trace tool calls and agent decisions.
+
+---
 
 ## Project Structure
 
@@ -76,31 +115,32 @@ python web/main.py
 your-project-name/
 ├── agents/                 # Agent implementations
 │   └── core/
-│       └── langgraph/     # LangGraph-based agent implementations
-├── config/                # Configuration files
-├── database/             # Database migrations and schemas
-├── logs/                 # Application logs
-├── tools/                # Tool implementations
-│   ├── common/           # Common utilities
-│   └── your-project-name/ # Project-specific tools
-├── web/                  # Web interface
-│   └── templates/        # HTML templates
-└── tests/               # Test files
+│       └── langgraph/      # LangGraph-based agent logic
+├── config/                 # Configuration files
+├── database/               # Database migrations and schemas
+├── logs/                   # Application logs
+├── tools/                  # Tool implementations
+│   ├── common/             # Common utilities
+│   └── your-project-name/  # Project-specific tools
+├── web/                    # Web interface (FastAPI + HTML)
+│   └── templates/          # HTML templates
+└── tests/                  # Test suite
 ```
 
 ## Development
 
 ### Adding New Tools
 
-1. Create a new tool file in `tools/your-project-name/`
-2. Add tool configuration to `config/tools.json`
-3. Update agent configurations in `config/nodes.json`
+1. Create a new tool file in `tools/your-project-name/`.
+2. Add tool configuration to `config/tools.json`.
+3. Update agent configurations in `config/nodes.json`.
+4. Adjust prompt templates in `config/openai_config.json`.
 
 ### Adding New Agents
 
-1. Create agent implementation in `agents/core/langgraph/`
-2. Add agent configuration to `config/nodes.json`
-3. Update supervisor routing if needed
+1. Add agent entry in `config/nodes.json`.
+2. Define prompts and model settings in `config/openai_config.json`.
+3. Include new agent in supervisor routing if applicable.
 
 ## Contributing
 
@@ -108,12 +148,12 @@ your-project-name/
 2. Create a feature branch
 3. Commit your changes
 4. Push to the branch
-5. Create a Pull Request
+5. Open a Pull Request
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Credits
 
-Developed by Anjali Jain 
+Developed by Anjali Jain
