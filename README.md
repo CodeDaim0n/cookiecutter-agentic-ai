@@ -396,7 +396,6 @@ Contributions to improve this template are welcome! If you have ideas, bug fixes
 
 This project is built upon the **Cookiecutter Agentic AI Template** created by:
 - **Anjali Jain** (Original Creator)
-- **Contributors** to the Cookiecutter Agentic AI Template
 
 ### Original Template
 - Repository: https://github.com/CodeDaim0n/cookiecutter-agentic-ai
