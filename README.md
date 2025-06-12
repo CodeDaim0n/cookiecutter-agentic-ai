@@ -154,7 +154,6 @@ Always send user queries to `supervisor_agent` via the UI or API. The supervisor
   ```bash
   uvicorn <project>.web.main:app --host 0.0.0.0 --port 80 --workers 4
   ```
-* **Docker:** see the provided `Dockerfile` for containerization.
 * **Security:** use HTTPS, manage secrets in environment variables.
 
 ### 5. Logging & Monitoring
