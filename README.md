@@ -12,7 +12,7 @@ A powerful template for creating agentic AI systems with multiple agents, tools,
 * Structured project layout and type-hinted code
 * Comprehensive logging and monitoring
 
-## 🔍 Config Driven LangGraph with Builtin Open AI Tools
+## 🔍 Config Driven LangGraph Supervisor (with agent as tools) along with Builtin Open AI Tools support
 
 While this template leverages the core LangGraph framework for agent orchestration, it extends and enhances the standard LangGraph approach in several important ways:
 
