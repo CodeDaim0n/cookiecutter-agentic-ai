@@ -127,9 +127,11 @@ This will launch the app (using Uvicorn under the hood) on the default address h
 
 #### 8. Test the Setup
 Try out the system via the web UI or API. For example, using the web interface, you can enter a query and see how the system responds (more on usage below). You can also directly call the API endpoint (e.g. using curl or a tool like Postman):
-bashcurl -X POST "http://127.0.0.1:8000/api/agent" \
+```bash
+curl -X POST "http://127.0.0.1:8000/api/agent" \
 -H "Content-Type: application/json" \
 -d '{"agent_name": "supervisor_agent", "message": "Hello world", "identifier": "user123"}'
+```
 This sends a sample request to the supervisor agent. The response (in JSON) should come back with an output from one of the agents. If you see a coherent reply or structured output, your setup is working!
 
 ### 2. Customizing Agents & Tools
