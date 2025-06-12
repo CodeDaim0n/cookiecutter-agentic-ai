@@ -7,7 +7,7 @@ A powerful template for creating agentic AI systems with multiple agents, tools,
 * Multiple AI agents with different capabilities
 * Supervisor agent for intelligent routing and coordination
 * Customizable tools for each agent
-* Web interface built with FastAPI
+* Quick tester interface and  api endpoints built with FastAPI
 * Seamless OpenAI integration with function calling
 * Structured project layout and type-hinted code
 * Comprehensive logging and monitoring
