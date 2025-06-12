@@ -381,7 +381,7 @@ This project is built upon the **Cookiecutter Agentic AI Template** created by:
 ### Original Template
 - Repository: https://github.com/CodeDaim0n/cookiecutter-agentic-ai
 - License: MIT License
-- Created by: Anjali Jain and Contributors
+- Created by: Anjali Jain
 
 ### Acknowledgments
 We acknowledge and thank the original creators for providing the foundational framework that made this project possible.
