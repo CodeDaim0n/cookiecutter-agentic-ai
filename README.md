@@ -12,28 +12,27 @@ A powerful template for creating agentic AI systems with multiple agents, tools,
 * Structured project layout and type-hinted code
 * Comprehensive logging and monitoring
 
-## 🔍 Config Driven LangGraph Supervisor (with agent as tools) along with Builtin Open AI Tools support
-### <div align="center"> Langgraph Multi agent
-<div align="center">
-   <img src="https://github.com/langchain-ai/langgraph-supervisor/blob/main/static/img/supervisor.png" 
-     alt="LangGraph Supervisor Architecture" 
-     width="600" 
-     style="display: block; margin: 0 auto;" />
 
-
- 
-
-### <div align="center"> Langgraph Multi Agent Architecture
+### LangGraph Multi-Agent
+LangGraph's multi-agent architecture implements a sophisticated supervisor pattern where a central supervisor agent intelligently coordinates multiple specialized worker agents, each equipped with domain-specific tools and capabilities. The supervisor analyzes incoming queries, determines the most appropriate agent for the task, and orchestrates seamless handoffs between agents when complex workflows require multiple expertise areas. Each agent operates using the ReAct (Reasoning and Acting) paradigm, enabling them to dynamically reason about problems and call relevant tools—such as web search, calculators, or database queries—to gather information and execute actions. This architecture provides robust state management across agent interactions, maintains conversation context throughout multi-step processes, and ensures that complex tasks are efficiently distributed among agents while maintaining coherent, coordinated responses to users.
 
 <div align="center">
-   <img src="https://github.com/langchain-ai/langgraph-supervisor/blob/main/static/img/full_history.png" 
-     alt="LangGraph Multi agent" 
-     width="600" 
-     style="display: block; margin: 0 auto;" />
- <br />
+  <img src="https://github.com/langchain-ai/langgraph-supervisor/blob/main/static/img/supervisor.png" 
+       alt="LangGraph Supervisor Architecture" 
+       width="600" 
+       style="display: block; margin: 0 auto;" />
+</div>
+
+<div align="center">
+  <img src="https://github.com/langchain-ai/langgraph-supervisor/blob/main/static/img/full_history.png" 
+       alt="LangGraph Multi agent" 
+       width="600" 
+       style="display: block; margin: 0 auto;" />
+  <br />
   <small>Source: <a href="https://github.com/langchain-ai/langgraph-supervisor/blob/main/static/img/full_history.png">LangGraph multi agent architecture</a></small>
 </div>
 
+## 🔍 Config Driven LangGraph Supervisor (with agent as tools) along with Builtin Open AI Tools support
 While this template leverages the core LangGraph framework for agent orchestration, it extends and enhances the standard LangGraph approach in several important ways:
 
 1. **Automated Project Scaffold**
