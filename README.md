@@ -372,12 +372,18 @@ Contributions to improve this template are welcome! If you have ideas, bug fixes
 
 5. **Ensure Tests Pass**: If you add functionality, try to add or update tests. Make sure pytest runs without failures. This makes it easier for your contribution to be accepted.
 
+## Credits & Attribution
+
+This project is built upon the **Cookiecutter Agentic AI Template** created by:
+- **Anjali Jain** (Original Creator)
+- **Contributors** to the Cookiecutter Agentic AI Template
+
+### Original Template
+- Repository: https://github.com/CodeDaim0n/cookiecutter-agentic-ai
+- License: MIT License
+- Created by: Anjali Jain and Contributors
+
+### Acknowledgments
+We acknowledge and thank the original creators for providing the foundational framework that made this project possible.
+
 You can also open issues on the repo if you find problems or have questions. We appreciate feedback and contributions from the community to make this template better for everyone.
-
-## License
-
-This project is licensed under the MIT License. You are free to use, modify, and distribute it as per the terms of the license. See the LICENSE file in the repository for the full license text.
-
-## Credits
-
-This template was created and is maintained by Anjali Jain (and contributors). If you use this template for your project or research, a shout-out or attribution is appreciated but not required. We hope this template accelerates your development of powerful AI agent systems – happy building!
