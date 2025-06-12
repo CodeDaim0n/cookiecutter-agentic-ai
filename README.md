@@ -1,4 +1,4 @@
-# Agentic AI Template
+# Multi Agent Supervisor(tool-calling) Agentic AI Template
 
 A powerful template for creating agentic AI systems with multiple agents, tools, and a web interface. Developed by Anjali Jain.
 
@@ -13,6 +13,26 @@ A powerful template for creating agentic AI systems with multiple agents, tools,
 * Comprehensive logging and monitoring
 
 ## 🔍 Config Driven LangGraph Supervisor (with agent as tools) along with Builtin Open AI Tools support
+### <div align="center"> Langgraph Multi agent
+<div align="center">
+   <img src="https://github.com/langchain-ai/langgraph-supervisor/blob/main/static/img/supervisor.png" 
+     alt="LangGraph Supervisor Architecture" 
+     width="600" 
+     style="display: block; margin: 0 auto;" />
+
+
+ 
+
+### <div align="center"> Langgraph Multi Agent Architecture
+
+<div align="center">
+   <img src="https://github.com/langchain-ai/langgraph-supervisor/blob/main/static/img/full_history.png" 
+     alt="LangGraph Multi agent" 
+     width="600" 
+     style="display: block; margin: 0 auto;" />
+ <br />
+  <small>Source: <a href="https://github.com/langchain-ai/langgraph-supervisor/blob/main/static/img/full_history.png">LangGraph multi agent architecture</a></small>
+</div>
 
 While this template leverages the core LangGraph framework for agent orchestration, it extends and enhances the standard LangGraph approach in several important ways:
 
